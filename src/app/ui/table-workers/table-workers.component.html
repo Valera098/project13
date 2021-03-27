@@ -9,32 +9,34 @@
           <th scope="col" [style.width]="'30%'">Имя</th>
           <th scope="col">Фамилия</th>
           <th scope="col" [style.width]="'200px'"></th>
+          <th scope="col" [style.width]="'150px'">Телефон</th>
           <th scope="col" [style.width]="'150px'"></th>
         </tr>
         </thead>
         <tbody>
         <ng-container *ngFor="let worker of workers">
           <tr>
-              <th scope="row">{{ worker.id }}</th>
-              <td>{{ worker.name }}</td>
-              <td>{{ worker.surname }}</td>
-              <td></td>
-              <td>
-                <button
-                  class="btn btn-outline-danger btn-sm"
-                  (click)="onDeleteWorker(worker.id)"
-                >
-                  Удалить
-                </button>
-              </td>
+            <th scope="row">{{ worker.id }}</th>
+            <td>{{ worker.name }}</td>
+            <td>{{ worker.surname }}</td>
+            <td></td>
+            <td>{{ worker.phone }}</td>
+            <td>
+              <button
+                class="btn btn-outline-danger btn-sm"
+                (click)="onDeleteWorker(worker.id)"
+              >
+                Удалить
+              </button>
+            </td>
           </tr>
           <tr>
-            <td ></td>
+            <td></td>
             <td>
               <input name="name" [name]="worker.id"
-                type="text"
-                class="form-control"
-                placeholder="Имя"
+                     type="text"
+                     class="form-control"
+                     placeholder="Имя"
               />
             </td>
             <td>
@@ -51,6 +53,14 @@
                 <option [value]="myWorkerType.copywriter">Рекламщик</option>
                 <option [value]="myWorkerType.manager">Менеджер</option>
               </select>
+            </td>
+            <td>
+              <input name="phone" [name]="worker.id"
+                     type="text"
+                     class="form-control"
+                     placeholder="Телефон"
+                     [textMask]="{mask: mask}"
+              />
             </td>
             <td>
               <button

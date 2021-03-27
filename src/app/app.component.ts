@@ -25,7 +25,7 @@ export class AppComponent {
       this.workers.splice(index, 1);
     }
   }
-  onEdit({id, name, surname, type}) {
+  onEdit({id, name, surname, type, phone}) {
     if(this.isFieldsEmpty({name, surname, type}))return alert('Невозможно создать запись с пустыми полями');//Проверка, если поля пустые
 
 
@@ -33,7 +33,7 @@ export class AppComponent {
 
     this.workers[index] = {
       ...this.workers[index],
-      name, surname, type
+      name, surname, type, phone
     }
 
   }

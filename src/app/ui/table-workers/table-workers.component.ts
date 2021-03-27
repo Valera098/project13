@@ -13,6 +13,8 @@ export class TableWorkersComponent implements OnInit {
   @Input() title: string;
   @Input() workers: MyWorker[] = [];
 
+  public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+
   @Output() deleteWorker = new EventEmitter<number>();
   @Output() editWorker = new EventEmitter<object>();
 
@@ -26,8 +28,8 @@ export class TableWorkersComponent implements OnInit {
   onEditWorker(id:number) {
     console.log(id);
     const form = Array.from(document.getElementsByName(id.toString()))
-    const [name, surname, type] = form;
-    this.editWorker.emit({id, name:name['value'], surname:surname['value'], type:Number(type['value'])})
+    const [name, surname, type, phone] = form;
+    this.editWorker.emit({id, name:name['value'], surname:surname['value'], type:Number(type['value']), phone:phone['value']})
   }
 
 }
